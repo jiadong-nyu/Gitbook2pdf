@@ -28,11 +28,11 @@ def save_page_as_pdf(driver, url, output_path):
 def main():
     driver = setup_driver()
     try:
-        base_url = "https://docs.movementlabs.xyz/"
+        base_url = "https://docs.movementlabs.xyz/" # change url
         driver.get(base_url)
         time.sleep(10)  # Wait for the page to fully load
         elements = driver.find_elements(By.CSS_SELECTOR, "a")
-        links = {element.get_attribute('href') for element in elements if 'docs.movementlabs.xyz' in (element.get_attribute('href') or '')}
+        links = {element.get_attribute('href') for element in elements if 'docs.movementlabs.xyz' in (element.get_attribute('href') or '')} #change url
         for link in links:
             output_filename = f"{link.split('/')[-1] if link.split('/')[-1] else 'index'}.pdf"
             save_page_as_pdf(driver, link, output_filename)
